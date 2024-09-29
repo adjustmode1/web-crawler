@@ -38,7 +38,7 @@ for(let dataIndex = 0; dataIndex < wikiPediaTourism.length; dataIndex++){
         const fileName = wikiPediaTourism[dataIndex]['fileName']
         const outputPath = `${fileName}.txt`
 
-        data+= `<%title%>${$(titleTag).text().trim()}<%title%>\n`;
+        data+= `<title>${$(titleTag).text().trim()}</title>\n`;
 
         // loop body
         for(let bodyIndex = 0; bodyIndex < listBody.length; bodyIndex++){
@@ -54,25 +54,25 @@ for(let dataIndex = 0; dataIndex < wikiPediaTourism.length; dataIndex++){
                   const tagName = child.prop('tagName').toUpperCase();
                   
                   if(typeof titleBodyTag === 'string' && tagName === titleBodyTag.toUpperCase()) {
-                    data += `<%title%>${child.text().trim()}<%title%>`;
+                    data += `<title>${child.text().trim()}</title>`;
                   }else{
                     if(titleBodyTag.hasClass && child.hasClass(titleBodyTag.hasClass)){
                       if(titleBodyTag.get){
                         const childBodyTag = child.find(titleBodyTag.get);
 
-                        data += `<%title%>${childBodyTag.text().trim()}<%title%>`;
+                        data += `<title>${childBodyTag.text().trim()}</title>`;
                       }
                     }
                   }
 
                   if(typeof contentTag === 'string' && tagName === contentTag.toUpperCase()) {
-                    data += `<%body%>${(child.text().trim())}<%body%>`;
+                    data += `<body>${(child.text().trim())}</body>`;
                   }else{
                     if(contentTag.hasClass && child.hasClass(contentTag.hasClass)){
                       if(contentTag.get){
                         const childContentTag = child.find(contentTag.get);
 
-                        data += `<%title%>${childContentTag.text().trim()}<%title%>`;
+                        data += `<title>${childContentTag.text().trim()}</title>`;
                       }
                     }
                   }
