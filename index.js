@@ -54,7 +54,7 @@ function extractBody(child, contentBody, data) {
 
       if(child.find(contentBodyTagname)){
         if(tagName === contentBodyTagname.toUpperCase()){
-          data += `<title>${child.text().trim()}</title>`;
+          data += `<body>${child.text().trim()}</body>`;
         }
       }
     }
