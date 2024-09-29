@@ -14,6 +14,59 @@ function cleanText(text) {
   return text;
 }
 
+function checkObjectData(child, bodyData, data) {
+  if(bodyData.hasClass){
+    if(child.hasClass(bodyData.hasClass) && bodyData.get){ // has class
+      for(let indexChildTag = 0; indexChildTag < bodyData.get.length; indexChildTag ++){
+        const childBodyTag = child.find(bodyData.get[indexChildTag]);
+
+        data += `<title>${childBodyTag.text().trim()}</title>`;
+      }
+    }
+  } else{ // has id
+    //TODO: extract id
+  }
+
+  return data;
+}
+function extractTitle(child, bodyData, data) {
+  const tagName = child.prop('tagName').toUpperCase();
+  
+  if(typeof bodyData === 'string') { // type is string
+    if(tagName === bodyData.toUpperCase()){
+      data += `<title>${child.text().trim()}</title>`;
+    }
+  }else{ // type is object
+    data = checkObjectData(child, bodyData, data)
+  }
+
+
+  return data;
+}
+
+function extractBody(child, contentBody, data) {
+  const tagName = child.prop('tagName').toUpperCase();
+
+  if(Array.isArray(contentBody)) { // type is array string
+
+    for(let contentBodyIndex = 0; contentBodyIndex < contentBody.length; contentBodyIndex ++){
+      contentBodyTagname = contentBody[contentBodyIndex];
+
+      if(child.find(contentBodyTagname)){
+        if(tagName === contentBodyTagname.toUpperCase()){
+          data += `<title>${child.text().trim()}</title>`;
+        }
+      }
+    }
+
+  }else{ // type is object
+    data = checkObjectData(child, contentBody, data)
+  }
+
+
+  return data;
+}
+
 
 const folderOutput = 'dataset';
 
@@ -52,33 +105,9 @@ for(let dataIndex = 0; dataIndex < wikiPediaTourism.length; dataIndex++){
                 $(bodyTag).children().each(function () {
                   const child = $(this);
                   const tagName = child.prop('tagName').toUpperCase();
-                  
-                  if(typeof titleBodyTag === 'string' && tagName === titleBodyTag.toUpperCase()) {
-                    data += `<title>${child.text().trim()}</title>`;
-                  }else{
-                    if(titleBodyTag.hasClass && child.hasClass(titleBodyTag.hasClass)){
-                      if(titleBodyTag.get){
-                        const childBodyTag = child.find(titleBodyTag.get);
 
-                        data += `<title>${childBodyTag.text().trim()}</title>`;
-                      }
-                    }
-                  }
-
-                  if(typeof contentTag === 'string' && tagName === contentTag.toUpperCase()) {
-                    data += `<body>${(child.text().trim())}</body>`;
-                  }else{
-                    if(contentTag.hasClass && child.hasClass(contentTag.hasClass)){
-                      if(contentTag.get){
-                        const childContentTag = child.find(contentTag.get);
-
-                        data += `<title>${childContentTag.text().trim()}</title>`;
-                      }
-                    }
-                  }
-
-
-
+                  data = extractTitle(child, titleBodyTag ,data);
+                  data = extractBody(child, contentTag ,data);
                 })
             } else {
               //TODO: case object body 

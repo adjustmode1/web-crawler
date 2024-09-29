@@ -18,12 +18,12 @@ const wikiPediaTourism = [
             body: [
                 {
                     tag: 'div.mw-content-ltr.mw-parser-output',
-                    type: 'list',
-                    title: {
+                    type: 'list', // list is data is plat in selector
+                    title: { // string or object
                         hasClass: 'mw-heading',
                         get: 'h2'
                     },
-                    content: 'p'
+                    content: ['p','ul'] // array string or object
                 }
             ]
         },
@@ -39,9 +39,9 @@ const wikiPediaTourism = [
                     type: 'list',
                     title: {
                         hasClass: 'mw-heading',
-                        get: 'h2',
+                        get: ['h2'],
                     },
-                    content: 'p'
+                    content: ['p','ul']
                 }
             ]
         },
@@ -57,9 +57,9 @@ const wikiPediaTourism = [
                     type: 'list',
                     title: {
                         hasClass: 'mw-heading',
-                        get: 'h2',
+                        get: ['h2'],
                     },
-                    content: 'p'
+                    content: ['p','ul']
                 }
             ]
         },
@@ -75,9 +75,9 @@ const wikiPediaTourism = [
                     type: 'list',
                     title: {
                         hasClass: 'mw-heading',
-                        get: 'h2',
+                        get: ['h2'],
                     },
-                    content: 'p'
+                    content: ['p','ul']
                 }
             ]
         },
@@ -93,9 +93,9 @@ const wikiPediaTourism = [
                     type: 'list',
                     title: {
                         hasClass: 'mw-heading',
-                        get: 'h2',
+                        get: ['h2'],
                     },
-                    content: 'p'
+                    content: ['p','ul']
                 }
             ]
         },
@@ -111,9 +111,9 @@ const wikiPediaTourism = [
                     type: 'list',
                     title: {
                         hasClass: 'mw-heading',
-                        get: 'h2',
+                        get: ['h2'],
                     },
-                    content: 'p'
+                    content: ['p','ul']
                 }
             ]
         },
@@ -129,9 +129,9 @@ const wikiPediaTourism = [
                     type: 'list',
                     title: {
                         hasClass: 'mw-heading',
-                        get: 'h2',
+                        get: ['h2'],
                     },
-                    content: 'p'
+                    content: ['p','ul']
                 }
             ]
         },
@@ -147,9 +147,9 @@ const wikiPediaTourism = [
                     type: 'list',
                     title: {
                         hasClass: 'mw-heading',
-                        get: 'h2',
+                        get: ['h2'],
                     },
-                    content: 'p'
+                    content: ['p','ul']
                 }
             ]
         },
@@ -165,9 +165,9 @@ const wikiPediaTourism = [
                     type: 'list',
                     title: {
                         hasClass: 'mw-heading',
-                        get: 'h2',
+                        get: ['h2'],
                     },
-                    content: 'p'
+                    content: ['p','ul']
                 }
             ]
         },
@@ -183,9 +183,9 @@ const wikiPediaTourism = [
                     type: 'list',
                     title: {
                         hasClass: 'mw-heading',
-                        get: 'h2',
+                        get: ['h2'],
                     },
-                    content: 'p'
+                    content: ['p','ul']
                 }
             ]
         },
@@ -201,9 +201,9 @@ const wikiPediaTourism = [
                     type: 'list',
                     title: {
                         hasClass: 'mw-heading',
-                        get: 'h2',
+                        get: ['h2'],
                     },
-                    content: 'p'
+                    content: ['p','ul']
                 }
             ]
         },
@@ -219,9 +219,9 @@ const wikiPediaTourism = [
                     type: 'list',
                     title: {
                         hasClass: 'mw-heading',
-                        get: 'h2',
+                        get: ['h2'],
                     },
-                    content: 'p'
+                    content: ['p','ul']
                 }
             ]
         },
@@ -237,9 +237,9 @@ const wikiPediaTourism = [
                     type: 'list',
                     title: {
                         hasClass: 'mw-heading',
-                        get: 'h2',
+                        get: ['h2'],
                     },
-                    content: 'p'
+                    content: ['p','ul']
                 }
             ]
         },
@@ -255,9 +255,9 @@ const wikiPediaTourism = [
                     type: 'list',
                     title: {
                         hasClass: 'mw-heading',
-                        get: 'h2',
+                        get: ['h2'],
                     },
-                    content: 'p'
+                    content: ['p','ul']
                 }
             ]
         },
@@ -273,9 +273,9 @@ const wikiPediaTourism = [
                     type: 'list',
                     title: {
                         hasClass: 'mw-heading',
-                        get: 'h2',
+                        get: ['h2'],
                     },
-                    content: 'p'
+                    content: ['p','ul']
                 }
             ]
         },
@@ -291,9 +291,9 @@ const wikiPediaTourism = [
                     type: 'list',
                     title: {
                         hasClass: 'mw-heading',
-                        get: 'h2',
+                        get: ['h2'],
                     },
-                    content: 'p'
+                    content: ['p','ul']
                 }
             ]
         },
