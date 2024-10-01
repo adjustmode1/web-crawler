@@ -7,7 +7,7 @@ const saveDataset = 'dataset';
 const listFile = fs.readdirSync(rawDataset);
 
 function cleanText(text) {
-  return text.replace(/\s+/g, ' ').trim();
+  return text.replaceAll("<body>", " ").replaceAll("</body>", " ").replaceAll(/\s+/g, ' ').trim();
 }
 
 function chunkPage(content) {
