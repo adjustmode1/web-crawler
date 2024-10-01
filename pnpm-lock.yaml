@@ -20,6 +20,9 @@ dependencies:
   puppeteer:
     specifier: ^23.4.1
     version: 23.4.1
+  ulid:
+    specifier: ^2.3.0
+    version: 2.3.0
 
 packages:
 
@@ -1126,6 +1129,11 @@ packages:
 
   /typed-query-selector@2.12.0:
     resolution: {integrity: sha512-SbklCd1F0EiZOyPiW192rrHZzZ5sBijB6xM+cpmrwDqObvdtunOHHIk9fCGsoK5JVIYXoyEp4iEdE3upFH3PAg==}
+    dev: false
+
+  /ulid@2.3.0:
+    resolution: {integrity: sha512-keqHubrlpvT6G2wH0OEfSW4mquYRcbe/J8NMmveoQOjUqmo+hXtO+ORCpWhdbZ7k72UtY61BL7haGxW6enBnjw==}
+    hasBin: true
     dev: false
 
   /unbzip2-stream@1.4.3:
