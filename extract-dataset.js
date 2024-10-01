@@ -11,20 +11,34 @@ function cleanText(text) {
 }
 
 function chunkPage(content) {
-  const titlePattern = /<title>(.*?)<\/title>/g;
-  const titles = [...content.matchAll(titlePattern)].map(match => cleanText(match[1]));
-  const result = [];
+  const regex = /<title>(.*?)<\/title>|<body>(.*?)<\/body>/g;
 
-  titles.forEach((title) => {
-      const bodyPattern = new RegExp(`<body>(.*?)</body>(?=<title>|$)`, 'gs');
-      const bodies = [...content.matchAll(bodyPattern)].map(match => cleanText(match[1]));
+  let match;
+  let extractedData = [];
+  let currentTitle = null;
+  let currentBodies = [];
+  while ((match = regex.exec(content)) !== null) {
+    if (match[1]) {
+        if (currentTitle !== null) {
+            extractedData.push({
+                title: currentTitle,
+                bodies: currentBodies.join('/n')
+            });
+        }
+        currentTitle = match[1];
+        currentBodies = [];
+    } else if (match[2]) {
+        currentBodies.push(match[2]);
+    }
+}
 
-      bodies.forEach((body) => {
-          result.push(cleanText(body.trim()));
+  if (currentTitle !== null) {
+      extractedData.push({
+          title: currentTitle,
+          bodies: currentBodies.join("\n")
       });
-  });
-
-  return result;
+  }
+  return extractedData;
 }
 
 let chunkCount = 0;
@@ -40,8 +54,10 @@ listFile.map(file => {
     const listChunks = chunkPage(data);
 
     listChunks.forEach((chunkData, index) => {
-      chunkCount += 1;
-      fs.writeFileSync(path.join(saveDataset, fileName, 'chunk_' + index), chunkData, 'utf-8');
+      if(chunkData.bodies.length > 0){
+        chunkCount += chunkData.bodies.length;
+        fs.writeFileSync(path.join(saveDataset, fileName, 'chunk_' + index), JSON.stringify(chunkData, null, 2), 'utf-8');
+      }
     })
   }catch(e){
     console.error('error: ',e);
